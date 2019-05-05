@@ -8,7 +8,7 @@ const config = require('../../config/config.js');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-const User = require('./user.js');
+const User = require('../../models/user/user.js');
 
 
 
