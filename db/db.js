@@ -1,9 +1,7 @@
-const mongoose = require('mongoose'),
-    dbInfo = require('./db.credentials.js'),
-    mongoBaseUrl = `${dbInfo.connectionString}/${dbInfo.authenticationDatabase}`,
-    database = mongoose.createConnection(mongoBaseUrl, {
-        useNewUrlParser: true
-    });
+const mongoose = require('mongoose');
+const dbInfo = require('./db.credentials.js');
+const mongoBaseUrl = `${dbInfo.connectionString}/${dbInfo.authenticationDatabase}`;
+const database = mongoose.createConnection(mongoBaseUrl, { useNewUrlParser: true });
 
 
 module.exports = database;

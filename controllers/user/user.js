@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');  
 const databaseConnection = require('../../db/db.js');
-const usersDatabase = databaseConnection.useDb('Users')
+const usersDatabase = databaseConnection.useDb('Users');
 
 const UserSchema = new mongoose.Schema({  
   name: String,
