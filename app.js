@@ -1,9 +1,11 @@
-var express = require('express');
-var app = express();
-var db = require('./db/db.js');
+var express = require('express'),
+    app = express(),
+    db = require('./db/db.js'),
+    UserController = require('./controllers/user/usercontroller.js'),
+    HomeController = require('./controllers/home/homecontroller.js')
 
 
-var UserController = require('./user/usercontroller.js');
+app.use('/', HomeController);
 app.use('/users', UserController);
 
 
