@@ -1,2 +1,2 @@
-# node-api
-Testing Node API with Mongo, Mongoose, JWT &amp; eventually Vue
+# node-jwt
+Testing API's with Node, Mongo, Mongoose, JWT &amp; eventually Vue
