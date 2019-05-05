@@ -110,13 +110,33 @@
                         <div class="btn" id="sign-in">Sign In</div>
                     </a> 
                 </div> 
-            </form>           
+            </form> 
+            <div id="rez"></div>          
             `);
             $('.box').hide().fadeIn(1000);
         });
         $(document).on('click', '#sign-in', (event) => {
             event.preventDefault();
-            alert('clicked_login');
+
+            $.ajax({
+                url: "http://localhost:3000/auth/login",
+                method: "POST",
+                data: {
+                    name: $("#username").val(), 
+                    email: $("#username").val(), 
+                    password: $("#password").val()
+                },
+                success: (response) => {
+                    $("#rez").html("<p>"+ JSON.stringify(response) +"</p>");
+                },
+                error: (err) => {
+                    $("#rez").html(`
+                    <p style="color:red;">Error</p>
+                    <div><p>${JSON.stringify(err)}</p></div>
+                    `)
+                }
+            });
+            
         })
     </script>
 </body>

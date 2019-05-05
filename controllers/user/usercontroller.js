@@ -1,23 +1,57 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const config = require('../../config/config.js');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
+
 const User = require('./user.js');
 
+
+
+
+/**********************************************************************/
+/******************************** POST ********************************/
+/**********************************************************************/
 router.post('/', (req, res) => {
     User.create({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
     }, (err, user) => {
-        return err 
+        return err
             ? res.status(500).send("There was a problem adding the information to the database.")
             : res.status(200).send(user);
     });
 });
 
+router.post('/register', function (req, res) {
+    var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+    User.create({
+        name: req.body.name,
+        email: req.body.email,
+        password: hashedPassword
+    },
+        function (err, user) {
+            if (err) return res.status(500).send("There was a problem registering the user.")
+            // create a token
+            var token = jwt.sign({ id: user._id }, config.secret, {
+                expiresIn: 600
+            });
+            res.status(200).send({ auth: true, token: token });
+        });
+});
+/*----------------------------------------------------------------------*/
+
+
+
+
+/************************************************************************/
+/********************************** GET *********************************/
+/************************************************************************/
 router.get('/', (req, res) => {
     User.find({}, (err, users) => {
         return err
@@ -30,12 +64,19 @@ router.get('/:id', (req, res) => {
     User.findById(req.params.id, (err, user) => {
         return err
             ? res.status(500).send("There was a problem finding the user.")
-            : !user 
+            : !user
                 ? res.status(404).send("No user found.")
                 : res.status(200).send(user);
     });
 });
+/*--------------------------------------------------------------------*/
 
+
+
+
+/**********************************************************************/
+/******************************** DELETE ******************************/
+/**********************************************************************/
 router.delete('/:id', (req, res) => {
     User.findByIdAndRemove(req.params.id, (err, user) => {
         return err
@@ -43,7 +84,14 @@ router.delete('/:id', (req, res) => {
             : res.status(200).send("User " + user.name + " was deleted.");
     });
 });
+/*--------------------------------------------------------------------*/
 
+
+
+
+/**********************************************************************/
+/********************************** PUT *******************************/
+/**********************************************************************/
 router.put('/:id', (req, res) => {
     User.findByIdAndUpdate(req.params.id, req.body, {
         new: true
@@ -53,5 +101,8 @@ router.put('/:id', (req, res) => {
             : res.status(200).send(user);
     });
 });
+/*--------------------------------------------------------------------*/
+
+
 
 module.exports = router;

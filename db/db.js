@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const dbInfo = require('./db.credentials.js');
-const mongoBaseUrl = `${dbInfo.connectionString}/${dbInfo.authenticationDatabase}`;
+const config = require('../config/config.js');
+const mongoBaseUrl = `${config.db.connectionString}/${config.db.authenticationDatabase}`;
 const database = mongoose.createConnection(mongoBaseUrl, { useNewUrlParser: true });
 
 
