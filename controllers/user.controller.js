@@ -3,12 +3,12 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const config = require('../../config/config.js');
+const config = require('../config/config.js');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-const User = require('../../models/user/user.js');
+const User = require('../models/user.js');
 
 
 

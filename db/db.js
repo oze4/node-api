@@ -1,7 +1,10 @@
+const config = require('../utils/config.js');
 const mongoose = require('mongoose');
-const config = require('../config/config.js');
 const mongoBaseUrl = `${config.db.connectionString}/${config.db.authenticationDatabase}`;
-const database = mongoose.createConnection(mongoBaseUrl, { useNewUrlParser: true });
+
+mongoose.set('useCreateIndex', true) // needed to suppress errors
+const mongoDB = mongoose.createConnection(mongoBaseUrl, { useNewUrlParser: true });
 
 
-module.exports = database;
+
+module.exports = mongoDB;

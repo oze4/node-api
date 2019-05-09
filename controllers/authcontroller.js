@@ -3,8 +3,8 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const config = require('../../config/config.js');
-const User = require('../../models/user/user.js');
+const config = require('../config/config.js');
+const User = require('../models/user.js/index.js');
 
 
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -17,7 +17,7 @@ router.post('/login', (req, res) => {
         if (!user) return res.status(404).send('No user found.');
         const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
         if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
-        const token = jwt.sign({ id: user._id }, config.secret, { expiresIn: 600 });
+        const t = jwt.sign({ id: user._id }, config.secret, { expiresIn: 600 });
         res.status(200).send({ auth: true, token: token });
     });
 });
