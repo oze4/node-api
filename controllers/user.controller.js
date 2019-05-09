@@ -29,18 +29,21 @@ router.post('/', (req, res) => {
 });
 
 router.post('/register', function (req, res) {
-    var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+    //var hashedPassword = bcrypt.hashSync(req.body.password, 8);
     User.create({
         name: req.body.name,
         email: req.body.email,
-        password: hashedPassword
-    },
-        function (err, user) {
+        //password: hashedPassword
+        password: req.body.password
+    }, (err, user) => {
             if (err) return res.status(500).send("There was a problem registering the user.")
             // create a token
             var token = jwt.sign({ id: user._id }, config.secret, {
                 expiresIn: 600
             });
+            /**
+             * do something here to bcrypt the token?
+             */
             res.status(200).send({ auth: true, token: token });
         });
 });
