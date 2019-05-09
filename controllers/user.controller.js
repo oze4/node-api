@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 const config = require('../config/config.js');
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -16,18 +15,6 @@ const User = require('../models/user.js');
 /**********************************************************************/
 /******************************** POST ********************************/
 /**********************************************************************/
-router.post('/', (req, res) => {
-    User.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    }, (err, user) => {
-        return err
-            ? res.status(500).send("There was a problem adding the information to the database.")
-            : res.status(200).send(user);
-    });
-});
-
 router.post('/register', function (req, res) {
     //var hashedPassword = bcrypt.hashSync(req.body.password, 8);
     User.create({
