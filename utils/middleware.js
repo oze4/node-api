@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config/config.js');
+const config = require('../utils/config.js');
 
 
 const middleware = {
