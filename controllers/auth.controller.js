@@ -3,11 +3,19 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const config = require('../config/config.js');
-const User = require('../models/user.js/index.js');
+const User = require('../models/user.js');
 
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
+
+
+router.get('/', (req, res) => {
+    return res.status(403).send({
+        auth: false,
+        message: 'No token provided.'
+      });
+});
 
 
 router.post('/login', (req, res) => {

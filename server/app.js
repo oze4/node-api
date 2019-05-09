@@ -1,13 +1,17 @@
 const express = require('express');
 const app = express();
-const UserController = require('./controllers/user/usercontroller.js');
-const HomeController = require('./controllers/home/homecontroller.js');
-const AuthController = require('./controllers/authentication/authcontroller.js')
+const middleware = require('../utils/middleware.js');
+const UserController = require('../controllers/user.controller.js');
+const HomeController = require('../controllers/home.controller.js');
+const AuthController = require('../controllers/auth.controller.js')
 
 
 app.use('/', HomeController);
 app.use('/auth', AuthController);
-app.use('/users', UserController);
+app.use('/users', middleware.verifyToken, UserController);
+
+// 404 middleware
+app.use(middleware.routeNotFound);
 
 
 module.exports = app;

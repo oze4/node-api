@@ -4,7 +4,7 @@ const path = require('path');
 
 
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../views/home/index.html'));
+    res.sendFile(path.resolve(__dirname, '../views/index.html'));
 });
 
 

@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const config = require('../config/config.js');
 
+
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
@@ -20,13 +21,12 @@ router.post('/register', function (req, res) {
     User.create({
         name: req.body.name,
         email: req.body.email,
-        //password: hashedPassword
         password: req.body.password
     }, (err, user) => {
             if (err) return res.status(500).send("There was a problem registering the user.")
             // create a token
             var token = jwt.sign({ id: user._id }, config.secret, {
-                expiresIn: 600
+                expiresIn: 60000
             });
             /**
              * do something here to bcrypt the token?
