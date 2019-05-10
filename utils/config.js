@@ -8,7 +8,8 @@ try {
             connectionString: process.env.MONGO_STRING,
             authenticationDatabase: process.env.MONGO_AUTH_DB,
         },
-        secret: process.env.SECRET,
+        jwtSignature: process.env.JWT_SIGNATURE,
+        jwtEncryptionKey: process.env.JWT_ENCRYPTION_KEY,
         port: process.env.PORT
     }
 }

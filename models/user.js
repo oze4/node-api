@@ -1,7 +1,9 @@
+'use strict'
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const mongoConnection = require('../db/db.js');
-const usersDatabase = mongoConnection.useDb('Users');
+const usersDatabase = mongoConnection.useDb('NodeJWT');
 
 
 const User = new mongoose.Schema({
@@ -37,4 +39,4 @@ User.methods.validPassword = function (password) {
 
 
 
-module.exports = usersDatabase.model('Users', User, 'users'); // (database, schema, collection)
+module.exports = usersDatabase.model('NodeJWT', User, 'users'); // (database, schema, collection)

@@ -3,6 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const config = require('../utils/config.js');
+const middleware = require('../utils/middleware.js');
 
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -16,24 +17,21 @@ const User = require('../models/user.js');
 /**********************************************************************/
 /******************************** POST ********************************/
 /**********************************************************************/
-router.post('/register', function (req, res) {
-    //var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+/*
+router.post('/register', (req, res) => {
     User.create({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
-    }, (err, user) => {
-            if (err) return res.status(500).send("There was a problem registering the user.")
-            // create a token
-            var token = jwt.sign({ id: user._id }, config.secret, {
-                expiresIn: 60000
-            });
-            /**
-             * do something here to bcrypt the token?
-             */
-            res.status(200).send({ auth: true, token: token });
-        });
+    }).then((user) => {
+        const token = jwt.sign({ id: user._id }, config.jwtSecret, { expiresIn: 60000 });
+        const et = middleware.e.e(token);
+        res.status(200).send({ auth: true, token: et });
+    }).catch((err) => {
+        res.status(500).send("There was a problem registering the user");
+    })
 });
+*/
 /*----------------------------------------------------------------------*/
 
 

@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('../utils/config.js');
+const _e_ = require('./helper.js');
 
 
 const middleware = {
@@ -9,14 +10,15 @@ const middleware = {
         if (!token) {
             return res.status(403).send({
                 auth: false,
-                message: 'No token provided.'
+                message: 'Not authorized'
             });
         }
-        jwt.verify(token, config.secret, (err, decoded) => {
+        const t = this.e.d(token, config.jwtEncryptionKey);
+        jwt.verify(t, config.jwtSignature, (err, decoded) => {
             if (err) {
                 return res.status(500).send({
                     auth: false,
-                    message: 'Failed to authenticate token.'
+                    message: 'Failed to authenticate'
                 });
             }
             req.userId = decoded.id;
@@ -24,13 +26,14 @@ const middleware = {
         });
     },
 
-    
     routeNotFound: (req, res, next) => {
         return res.status(500).send({
             auth: false,
-            message: 'Failed to authenticate token.'
+            message: 'Not authorized'
         });
     },
+
+    e: _e_,
 
 }
 
