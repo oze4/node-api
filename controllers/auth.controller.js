@@ -26,11 +26,19 @@ router.post('/register', (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: req.body.password
-    }).then((user) => {
+    })
+    .then((user) => {
         const token = jwt.sign({ id: user._id }, config.jwtSignature, { expiresIn: 60000 });
         const et = middleware.e.e(token, config.jwtEncryptionKey);
         res.status(200).send({ auth: true, token: et });
-    }).catch((err) => {
+    })
+    .catch((err) => {
+        // 11000 means user already exists
+        if(err.code !== 11000){
+            setTimeout(() => {
+                User.findOneAndDelete({email: req.body.email}, (err,doc)=>{});
+            }, 1000)
+        }
         res.status(500).send("There was a problem registering the user");
     })
 });
