@@ -13,7 +13,7 @@ const middleware = {
                 message: 'Not authorized'
             });
         }
-        const t = this.e.d(token, config.jwtEncryptionKey);
+        const t = _e_.d(token, config.jwtEncryptionKey);
         jwt.verify(t, config.jwtSignature, (err, decoded) => {
             if (err) {
                 return res.status(500).send({
