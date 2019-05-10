@@ -1,11 +1,7 @@
 'use strict'
-
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const config = require('../utils/config.js');
-const middleware = require('../utils/middleware.js');
 
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -19,22 +15,8 @@ const User = require('../models/user.js');
 /**********************************************************************/
 /******************************** POST ********************************/
 /**********************************************************************/
-/*
-router.post('/register', (req, res) => {
-    User.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    }).then((user) => {
-        const token = jwt.sign({ id: user._id }, config.jwtSecret, { expiresIn: 60000 });
-        const et = middleware.e.e(token);
-        res.status(200).send({ auth: true, token: et });
-    }).catch((err) => {
-        res.status(500).send("There was a problem registering the user");
-    })
-});
-*/
-/*----------------------------------------------------------------------*/
+//                   * post requests would go here *                   /
+/*--------------------------------------------------------------------*/
 
 
 
@@ -49,6 +31,7 @@ router.get('/', (req, res) => {
             : res.status(200).send(users);
     });
 });
+
 
 router.get('/:id', (req, res) => {
     User.findById(req.params.id, (err, user) => {
