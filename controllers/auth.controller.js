@@ -1,3 +1,5 @@
+'use strict'
+
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
@@ -9,6 +11,8 @@ const User = require('../models/user.js');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
+
+
 
 
 router.get('/', (req, res) => {
@@ -56,6 +60,8 @@ router.post('/login', (req, res) => {
         res.status(200).send({ auth: true, token: et });
     });
 });
+
+
 
 
 module.exports = router;
