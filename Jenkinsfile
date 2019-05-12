@@ -31,23 +31,23 @@ ssh -v root@ost-sf-dckr-00 <<EOF
 echo "--------------------------------"
 echo "---- pulling latest image ------"
 echo "--------------------------------"
-docker pull ${dockerhub_container}:latest
+docker pull oze4/node-api:latest
 echo "--------------------------------"
 echo "--------------------------------"
 echo "--- stopping existing image ----"
 echo "--------------------------------"
-docker stop ${local_container_name}
+docker stop node-api
 echo "--------------------------------"
 echo "--------------------------------"
 echo "--- removing existing image ----"
 echo "--------------------------------"
-docker rm ${local_container_name}
+docker rm node-api
 echo "--------------------------------"
 echo "--------------------------------"
 echo "------ starting new image ------"
 echo "--------------------------------"
 cd "/srv/nginx-proxy/"
-docker-compose up -d ${local-container-name}
+docker-compose up -d node-api
 echo "--------------------------------"
 echo "--------------------------------"
 echo "----------- DONE ---------------"
