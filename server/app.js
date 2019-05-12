@@ -10,7 +10,7 @@ const config = require('../utils/config.js');
 
 app.use('/', HomeController);
 app.use('/auth', AuthController);
-app.use('/users', /*middleware.verifyToken,*/ UserController);
+app.use('/users', middleware.verifyToken, UserController);
 
 app.set('port', config.port)
 
