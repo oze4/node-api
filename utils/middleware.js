@@ -14,17 +14,24 @@ const middleware = {
                 message: 'Not authorized'
             });
         }
-        const t = _e_.d(token, config.jwtEncryptionKey);
-        jwt.verify(t, config.jwtSignature, (err, decoded) => {
-            if (err) {
-                return res.status(403).send({
-                    auth: false,
-                    message: 'Failed to authenticate'
-                });
-            }
-            req.userId = decoded.id;
-            next();
-        });
+        try {
+            const t = _e_.d(token, config.jwtEncryptionKey);
+            jwt.verify(t, config.jwtSignature, (err, decoded) => {
+                if (err) {
+                    return res.status(403).send({
+                        auth: false,
+                        message: 'Failed to authenticate'
+                    });
+                }
+                req.userId = decoded.id;
+                next();
+            });
+        } catch (err) {
+            return res.status(403).send({
+                auth: false,
+                message: 'Failed to authenticate'
+            });
+        }
     },
 
     routeNotFound: (req, res, next) => {
