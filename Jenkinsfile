@@ -2,6 +2,7 @@ node {
     def app
     def dockerhub_container = "oze4/node-api"
     def local_container_name = "node-api"
+    def docker_compose_path = "/srv/traefik/docker-compose/"
 
     stage('Clone Repository') {
         checkout scm
@@ -46,7 +47,7 @@ echo "--------------------------------"
 echo "--------------------------------"
 echo "------ starting new image ------"
 echo "--------------------------------"
-cd "/srv/nginx-proxy/"
+cd "'''+docker_compose_path+'''"
 docker-compose up -d '''+local_container_name+'''
 echo "--------------------------------"
 echo "--------------------------------"

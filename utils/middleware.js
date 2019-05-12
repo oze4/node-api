@@ -17,7 +17,7 @@ const middleware = {
         const t = _e_.d(token, config.jwtEncryptionKey);
         jwt.verify(t, config.jwtSignature, (err, decoded) => {
             if (err) {
-                return res.status(500).send({
+                return res.status(403).send({
                     auth: false,
                     message: 'Failed to authenticate'
                 });
