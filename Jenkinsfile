@@ -1,14 +1,14 @@
 node {
     def app
-    def dockerhub-container = "oze4/node-api"
-    def local-container-name = "node-api"
+    def dockerhub_container = "oze4/node-api"
+    def local_container_name = "node-api"
 
     stage('Clone Repository') {
         checkout scm
     }
 
     stage('Build Image') {
-        app = docker.build("${dockerhub-container}")
+        app = docker.build("${dockerhub_container}")
     }
 
     stage('Test Image') {
@@ -31,17 +31,17 @@ ssh -v root@ost-sf-dckr-00 <<EOF
 echo "--------------------------------"
 echo "---- pulling latest image ------"
 echo "--------------------------------"
-docker pull ${dockerhub-container}:latest
+docker pull ${dockerhub_container}:latest
 echo "--------------------------------"
 echo "--------------------------------"
 echo "--- stopping existing image ----"
 echo "--------------------------------"
-docker stop ${dockerhub-container}
+docker stop ${local_container_name}
 echo "--------------------------------"
 echo "--------------------------------"
 echo "--- removing existing image ----"
 echo "--------------------------------"
-docker rm ${dockerhub-container}
+docker rm ${local_container_name}
 echo "--------------------------------"
 echo "--------------------------------"
 echo "------ starting new image ------"
