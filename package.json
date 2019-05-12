@@ -4,7 +4,8 @@
   "description": "node jwt testing",
   "main": "./server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server/server.js"
   },
   "author": "matthew oestreich",
   "license": "MIT",
