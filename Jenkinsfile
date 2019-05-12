@@ -26,35 +26,35 @@ node {
 
     stage ('SSH To Docker Host and Deploy') {
         sshagent(credentials : ['ost-sf-dckr-00']) {
-            sh """
+            sh '''
 ssh -v root@ost-sf-dckr-00 <<EOF
 echo "--------------------------------"
 echo "---- pulling latest image ------"
 echo "--------------------------------"
-docker pull oze4/node-api:latest
+docker pull '''+dockerhub_container+''':latest
 echo "--------------------------------"
 echo "--------------------------------"
 echo "--- stopping existing image ----"
 echo "--------------------------------"
-docker stop node-api
+docker stop '''+local_container_name+'''
 echo "--------------------------------"
 echo "--------------------------------"
 echo "--- removing existing image ----"
 echo "--------------------------------"
-docker rm node-api
+docker rm '''+local_container_name+'''
 echo "--------------------------------"
 echo "--------------------------------"
 echo "------ starting new image ------"
 echo "--------------------------------"
 cd "/srv/nginx-proxy/"
-docker-compose up -d node-api
+docker-compose up -d '''+local_container_name+'''
 echo "--------------------------------"
 echo "--------------------------------"
 echo "----------- DONE ---------------"
 echo "--------------------------------"
 echo "--------------------------------"
 EOF
-"""
+'''
         }
     }
 }
