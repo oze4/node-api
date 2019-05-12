@@ -26,7 +26,6 @@ const User = require('../models/user.js');
 /************************************************************************/
 router.get('/', (req, res) => {
     User.find({}, (err, users) => {
-        console.log(users);
         return err
             ? res.status(500).send("There was a problem finding the users.")
             : res.status(200).send(users);
