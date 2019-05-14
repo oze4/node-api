@@ -22,7 +22,5 @@ RUN npm install
 
 COPY . .
 
-RUN ["ls"]
-
 EXPOSE ${PORT}
 CMD ["npm", "start"]

@@ -16,6 +16,7 @@ node {
         app.inside {
             //sh 'npm run jenkinstest'
             sh 'cd '
+            sh 'npm install mocha request chai'
             sh 'ls -a'
             sh 'cat package.json'
         }
