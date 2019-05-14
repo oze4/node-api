@@ -1,12 +1,15 @@
 'use strict'
 const express = require('express');
 const app = express();
+const helmet = require('helmet');
 const middleware = require('../utils/middleware.js');
 const UserController = require('../controllers/user.controller.js');
 const HomeController = require('../controllers/home.controller.js');
-const AuthController = require('../controllers/auth.controller.js')
+const AuthController = require('../controllers/auth.controller.js');
 const config = require('../utils/config.js');
 
+
+app.use(helmet);
 
 app.use('/', HomeController);
 app.use('/auth', AuthController);
