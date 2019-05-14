@@ -2,6 +2,13 @@
 const app = require('./app');
 
 
-app.listen(app.get('port'), () => {
+let server = app.listen(app.get('port'), () => {
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+function stop() {
+  server.close();
+}
+
+module.exports = server;
+module.exports.stop = stop;
