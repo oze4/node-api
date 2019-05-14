@@ -9,7 +9,7 @@ const AuthController = require('../controllers/auth.controller.js');
 const config = require('../utils/config.js');
 
 
-app.use(helmet);
+app.use(helmet());
 
 app.use('/', HomeController);
 app.use('/auth', AuthController);
