@@ -19,9 +19,10 @@ RUN apt-get update
 RUN apt-get install -y build-essential
 RUN apt-get install -y python
 RUN npm install
-RUN mocha
 
 COPY . .
+
+RUN ["mocha"]
 
 EXPOSE ${PORT}
 CMD ["npm", "start"]
