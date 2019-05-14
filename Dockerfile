@@ -22,7 +22,7 @@ RUN npm install
 
 COPY . .
 
-RUN ["mocha"]
+RUN ["ls"]
 
 EXPOSE ${PORT}
 CMD ["npm", "start"]
