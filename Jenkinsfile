@@ -14,9 +14,8 @@ node {
 
     stage('Test Image') {
         app.inside {
-            //sh 'npm run jenkinstest'
+            sh 'npm run jenkinstest'
             sh 'cd '
-            sh 'npm install mocha request chai'
             sh 'ls -a'
             sh 'cat package.json'
         }
