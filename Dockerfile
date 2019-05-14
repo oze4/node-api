@@ -1,4 +1,4 @@
-FROM node:slim
+FROM node
 
 ARG MONGO_STRING
 ARG MONGO_AUTH_DB
