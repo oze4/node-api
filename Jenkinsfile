@@ -13,9 +13,9 @@ node {
     }
 
     stage('Test Image') {
-        //app.inside {
-        sh 'npm test'
-        //}
+        app.inside {
+            sh 'npm test'
+        }
     }
 
     stage('Push Image To Docker Hub') {
