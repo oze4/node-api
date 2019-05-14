@@ -14,7 +14,7 @@ node {
 
     stage('Test Image') {
         app.inside {
-            sh 'npm test'
+            sh 'npm jenkinstest'
         }
     }
 

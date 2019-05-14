@@ -5,6 +5,7 @@
   "main": "./server/server.js",
   "scripts": {
     "test": "mocha tests/test-pages.js",
+    "jenkinstest": "./node_modules/.bin/_mocha tests/test-pages.js",
     "start": "node ./server/server.js"
   },
   "author": "matthew oestreich",
