@@ -17,6 +17,7 @@ node {
             //sh 'npm run jenkinstest'
             sh 'cd '
             sh 'ls -a'
+            sh 'cat package.json'
         }
     }
 
