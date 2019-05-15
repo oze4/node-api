@@ -16,8 +16,7 @@ node {
     stage('Mocha Test Image') {
         docker.image("${dockerhub_container}").inside {
             withEnv([
-                'npm_config_cache=npm-cache',
-                'HOME=.',
+                //'HOME=.',
                 "MONGO_STRING=${MONGO_STRING}",
                 "MONGO_AUTH_DB=${MONGO_AUTH_DB}",
                 "JWT_SIGNATURE=${JWT_SIGNATURE}",
@@ -28,7 +27,6 @@ node {
                 yarn install
                 yarn test
                 rm -R node_modules
-                rm -R npm-cache
                 ls -a
                 '''
             }
