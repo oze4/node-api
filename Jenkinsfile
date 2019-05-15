@@ -17,10 +17,13 @@ node {
             withEnv([
                 'npm_config_cache=npm-cache',
                 'HOME=.',
+                "MONGO_STRING=${MONGO_STRING}",
+                "MONGO_AUTH_DB=${MONGO_AUTH_DB}",
+                "JWT_SIGNATURE=${JWT_SIGNATURE}",
+                "JWT_ENCRYPTION_KEY=${JWT_ENCRYPTION_KEY}"
+                "PORT=${PORT}"
             ]) {
-                sh "echo ${MONGO_STRING}"
                 sh 'npm install'
-                sh "process.env.MONGO_STRING = ${MONGO_STRING}"
                 sh 'cd '
                 sh 'npm test'
                 sh 'rm -R node_modules'
