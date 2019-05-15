@@ -16,7 +16,6 @@ node {
     stage('Mocha Test Image') {
         docker.image("${dockerhub_container}").inside {
             withEnv([
-                //'HOME=.',
                 "MONGO_STRING=${MONGO_STRING}",
                 "MONGO_AUTH_DB=${MONGO_AUTH_DB}",
                 "JWT_SIGNATURE=${JWT_SIGNATURE}",
