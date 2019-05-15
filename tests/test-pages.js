@@ -2,8 +2,8 @@ let expect = require('chai').expect;
 let request = require('request');
 let app = require('../server/app.js');
 let config = require('../utils/config.js');
-// has to be here so we can close the DB connection, or else
-/// mocha will just stay open due to processing still running
+// DB has to be here so we can close the DB connection, or else
+/// mocha will just stay open due to processes (mongo) still running
 let db = require('../db/db.js'); 
 
 
