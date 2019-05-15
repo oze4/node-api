@@ -25,8 +25,7 @@ node {
             ]) {
                 sh 'npm install'
                 sh 'cd '
-                sh 'ls -a'
-                sh 'cat package.json'
+                sh 'npm test'
             }
         }
     }
