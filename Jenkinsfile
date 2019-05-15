@@ -23,7 +23,7 @@ node {
                 */
                 'HOME=.',
             ]) {
-                sh 'sudo npm install'
+                sh 'npm install'
                 sh 'cd '
                 sh 'ls -a'
                 sh 'cat package.json'
