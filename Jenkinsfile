@@ -24,13 +24,13 @@ node {
                 "PORT=${PORT}",
             ]) {
                 sh '''
-npm install
-cd  
-npm test
-rm -R node_modules
-rm -R npm-cache
-ls -a
-'''
+                npm install
+                cd  
+                npm test
+                rm -R node_modules
+                rm -R npm-cache
+                ls -a
+                '''
             }
         }
     }
