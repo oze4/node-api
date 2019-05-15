@@ -9,9 +9,7 @@ node {
     }
 
     stage('Build Image') {
-        app = docker.build("${dockerhub_container}").inside {
-            
-        }
+        app = docker.build("${dockerhub_container}")
     }
 
     stage('Test Image') {
