@@ -21,15 +21,15 @@ describe('Loading Express...', function () {
         db.close(done);        
     });
     
-    describe('Test Suite', function () {
+    describe('Volkswagen Test', function () {
         it('myVar should equal true', function (done) {
             expect(myVar).to.equal(true);
             done();
         })
     });
 
-    describe('Main Application', function () {
-        it('home page should equal status code 200', function (done) {            
+    describe('Home Page', function () {
+        it('should equal status code 200', function (done) {            
             request(String("http://localhost:" + config.port), function (error, response, body) {
                 expect(response.statusCode).to.equal(200);
                 if (error) done(error);
