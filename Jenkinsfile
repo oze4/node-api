@@ -26,6 +26,7 @@ node {
                 sh 'npm install'
                 sh 'cd '
                 sh 'npm test'
+                sh 'rm -R node_modules'
             }
         }
     }
