@@ -15,15 +15,12 @@ node {
     stage('Test Image') {
         app.inside {
             withEnv([
-                /* Override the npm cache directory to avoid: EACCES: permission denied, mkdir '/.npm' */
                 'npm_config_cache=npm-cache',
-                /* set home to our current directory because other bower
-                * nonsense breaks with HOME=/, e.g.:
-                * EACCES: permission denied, mkdir '/.config'
-                */
                 'HOME=.',
             ]) {
+                sh "echo ${MONGO_STRING}"
                 sh 'npm install'
+                sh "process.env.MONGO_STRING = ${MONGO_STRING}"
                 sh 'cd '
                 sh 'npm test'
                 sh 'rm -R node_modules'
