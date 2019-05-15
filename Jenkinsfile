@@ -13,7 +13,7 @@ node {
     }
 
     stage('Test Image') {
-        app.inside {
+        docker.image("${dockerhub_container}").inside {
             withEnv([
                 'npm_config_cache=npm-cache',
                 'HOME=.',
