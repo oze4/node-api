@@ -5,6 +5,7 @@ node {
     def docker_compose_path = "/srv/traefik/docker-compose/"
 
     stage('Clone Repository') {
+        deleteDir()
         checkout scm
     }
 
