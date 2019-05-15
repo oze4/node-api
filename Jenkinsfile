@@ -10,12 +10,16 @@ node {
 
     stage('Build Image') {
         app = docker.build("${dockerhub_container}").inside {
-            stage('Test Image') {
-                //sh 'npm run jenkinstest'
-                sh 'cd '
-                sh 'ls -a'
-                sh 'cat package.json'
-            }
+            
+        }
+    }
+
+    stage('Test Image') {
+        app.inside {
+            sh 'npm install'
+            sh 'cd '
+            sh 'ls -a'
+            sh 'cat package.json'
         }
     }
 
