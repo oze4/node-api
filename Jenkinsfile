@@ -9,15 +9,13 @@ node {
     }
 
     stage('Build Image') {
-        app = docker.build("${dockerhub_container}")
-    }
-
-    stage('Test Image') {
-        app.inside {
-            sh 'npm run jenkinstest'
-            sh 'cd '
-            sh 'ls -a'
-            sh 'cat package.json'
+        app = docker.build("${dockerhub_container}").inside {
+            stage('Test Image') {
+                //sh 'npm run jenkinstest'
+                sh 'cd '
+                sh 'ls -a'
+                sh 'cat package.json'
+            }
         }
     }
 
