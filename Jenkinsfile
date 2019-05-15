@@ -14,7 +14,7 @@ node {
 
     stage('Test Image') {
         app.inside {
-            sh 'npm install'
+            sh 'sudo npm install'
             sh 'cd '
             sh 'ls -a'
             sh 'cat package.json'
