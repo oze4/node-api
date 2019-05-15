@@ -29,6 +29,7 @@ node {
                 npm test
                 rm -R node_modules
                 rm -R npm-cache
+                mkdir thisismytestdir
                 ls -a
                 '''
             }
