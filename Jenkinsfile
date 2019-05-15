@@ -25,8 +25,8 @@ node {
                 "PORT=${PORT}",
             ]) {
                 sh '''
-                npm install
-                npm test
+                yarn install
+                yarn test
                 rm -R node_modules
                 rm -R npm-cache
                 ls -a
