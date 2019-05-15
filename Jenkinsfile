@@ -20,8 +20,8 @@ node {
                 "MONGO_STRING=${MONGO_STRING}",
                 "MONGO_AUTH_DB=${MONGO_AUTH_DB}",
                 "JWT_SIGNATURE=${JWT_SIGNATURE}",
-                "JWT_ENCRYPTION_KEY=${JWT_ENCRYPTION_KEY}"
-                "PORT=${PORT}"
+                "JWT_ENCRYPTION_KEY=${JWT_ENCRYPTION_KEY}",
+                "PORT=${PORT}",
             ]) {
                 sh 'npm install'
                 sh 'cd '
