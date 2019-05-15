@@ -23,12 +23,14 @@ node {
                 "JWT_ENCRYPTION_KEY=${JWT_ENCRYPTION_KEY}",
                 "PORT=${PORT}",
             ]) {
-                sh 'npm install'
-                sh 'cd '
-                sh 'npm test'
-                sh 'rm -R node_modules'
-                sh 'rm -R npm-cache'
-                sh 'ls -a'
+                sh '''
+npm install
+cd  
+npm test
+rm -R node_modules
+rm -R npm-cache
+ls -a
+'''
             }
         }
     }
