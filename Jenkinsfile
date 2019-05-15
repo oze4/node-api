@@ -27,6 +27,7 @@ node {
                 sh 'cd '
                 sh 'npm test'
                 sh 'rm -R node_modules'
+                sh 'ls -a'
             }
         }
     }
