@@ -13,7 +13,7 @@ node {
         app = docker.build("${dockerhub_container}")
     }
 
-    stage('Test Image') {
+    stage('Mocha Test Image') {
         docker.image("${dockerhub_container}").inside {
             withEnv([
                 'npm_config_cache=npm-cache',
