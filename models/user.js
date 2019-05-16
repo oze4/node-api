@@ -1,8 +1,8 @@
 'use strict'
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const mongoConnection = require('../db/db.js');
-const usersDatabase = mongoConnection.useDb('NodeJWT');
+const mongoose         = require('mongoose');
+const bcrypt           = require('bcrypt');
+const mongoConnection  = require('../db/db.js');
+const usersDatabase    = mongoConnection.useDb('NodeJWT');
 
 
 const User = new mongoose.Schema({
