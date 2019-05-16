@@ -1,7 +1,7 @@
 'use strict'
-const jwt = require('jsonwebtoken');
-const config = require('../utils/config.js');
-const _e_ = require('./helper.js');
+const jwt     = require('jsonwebtoken');
+const config  = require('../utils/config.js');
+const _e_     = require('./helper.js');
 
 
 const middleware = {
