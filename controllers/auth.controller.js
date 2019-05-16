@@ -1,11 +1,11 @@
 'use strict'
-const express = require('express');
-const router = express.Router();
-const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const config = require('../utils/config.js');
-const middleware = require('../utils/middleware.js');
-const User = require('../models/user.js');
+const express     = require('express');
+const router      = express.Router();
+const bodyParser  = require('body-parser');
+const jwt         = require('jsonwebtoken');
+const config      = require('../utils/config.js');
+const middleware  = require('../utils/middleware.js');
+const User        = require('../models/user.js');
 
 
 router.use(bodyParser.urlencoded({ extended: false }));
