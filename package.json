@@ -5,7 +5,9 @@
   "main": "./server/server.js",
   "scripts": {
     "test": "mocha tests/test-pages.js",
-    "start": "node ./server/server.js"
+    "start": "node ./server/server.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "matthew oestreich",
   "license": "MIT",
@@ -18,9 +20,11 @@
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.1.4",
     "mongoose": "^5.5.5",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "mocha-junit-reporter": "^1.22.0"
-  }
+  },
+  "snyk": true
 }
